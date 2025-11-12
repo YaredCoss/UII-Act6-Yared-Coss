@@ -10,7 +10,7 @@
 
 # CRUD Viajes
 <img width="1366" height="696" alt="image" src="https://github.com/user-attachments/assets/cc801a15-fe08-431e-a34f-405b8d590f2b" />
-<img width="1920" height="1006" alt="image" src="https://github.com/user-attachments/assets/e466757c-a493-4b60-8433-793310548789" />
+<img width="1920" height="1005" alt="image" src="https://github.com/user-attachments/assets/4eee1e8a-4cf6-46e9-a8e6-c02c26e353bb" />
 <img width="1366" height="692" alt="image" src="https://github.com/user-attachments/assets/400e7359-bf66-449f-97e1-fb8309911272" />
 <img width="1365" height="694" alt="image" src="https://github.com/user-attachments/assets/6f325bcf-a516-4151-8347-3081e0deb246" />
 

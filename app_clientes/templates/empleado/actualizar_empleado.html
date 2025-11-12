@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Actualizar Empleado{% endblock %}
+{% block content %}
+<h2>Editar Empleado</h2>
+<form method="post" action="{% url 'realizar_actualizacion_empleado' empleado.pk %}">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Nombre</label>
+    <input type="text" name="nombre_empleado" value="{{ empleado.nombre_empleado }}" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Apellido</label>
+    <input type="text" name="apellido_empleado" value="{{ empleado.apellido_empleado }}" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Puesto</label>
+    <input type="text" name="puesto" value="{{ empleado.puesto }}" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Salario</label>
+    <input type="text" name="salario" value="{{ empleado.salario }}" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Teléfono</label>
+    <input type="text" name="telefono" value="{{ empleado.telefono }}" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Correo</label>
+    <input type="text" name="correo" value="{{ empleado.correo }}" class="form-control">
+  </div>
+  <button class="btn btn-primary">Actualizar</button>
+  <a href="{% url 'ver_empleado' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

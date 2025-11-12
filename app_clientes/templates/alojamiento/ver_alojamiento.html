@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Ver Alojamiento{% endblock %}
+{% block content %}
+<h2>Lista de Alojamientos</h2>
+<a href="{% url 'agregar_alojamiento' %}" class="btn btn-success mb-3">Agregar alojamiento</a>
+<form method="GET" class="mb-3">
+    <input type="text" name="buscar" class="form-control" placeholder="Buscar alojamiento...">
+  </form>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Teléfono</th>
+      <th>Precio</th>
+      <th>Calificación</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in alojamientos %}
+    <tr>
+      <td>{{ a.nombre_alojamiento }}</td>
+      <td>{{ a.telefono }}</td>
+      <td>{{ a.precio }}</td>
+      <td>{{ a.calificacion }}</td>
+      <td>
+        <a class="btn btn-sm btn-info" href="{% url 'actualizar_alojamiento' a.pk %}">Editar</a>
+        <a class="btn btn-sm btn-danger" href="{% url 'borrar_alojamiento' a.pk %}">Borrar</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">No hay alojamientos.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

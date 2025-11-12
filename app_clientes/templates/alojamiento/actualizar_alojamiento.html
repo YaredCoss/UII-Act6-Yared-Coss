@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Actualizar Alojamiento{% endblock %}
+{% block content %}
+<h2>Editar Alojamiento</h2>
+<form method="post" action="{% url 'realizar_actualizacion_alojamiento' alojamiento.pk %}">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Nombre del alojamiento</label>
+    <input type="text" name="nombre_alojamiento" value="{{ alojamiento.nombre_alojamiento }}" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Descripción</label>
+    <textarea name="descripcion" class="form-control">{{ alojamiento.descripcion }}</textarea>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Dirección</label>
+    <textarea name="direccion" class="form-control">{{ alojamiento.direccion }}</textarea>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Teléfono</label>
+    <input type="text" name="telefono" value="{{ alojamiento.telefono }}" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Precio</label>
+    <input type="text" name="precio" value="{{ alojamiento.precio }}" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Calificación</label>
+    <input type="text" name="calificacion" value="{{ alojamiento.calificacion }}" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Página web</label>
+    <input type="text" name="paginaweb" value="{{ alojamiento.paginaweb }}" class="form-control">
+  </div>
+  <button class="btn btn-primary">Actualizar</button>
+  <a href="{% url 'ver_alojamiento' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

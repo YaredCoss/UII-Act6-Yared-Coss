@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}Actualizar Viaje{% endblock %}
+{% block content %}
+<h2>Editar Viaje</h2>
+<form method="post" action="{% url 'realizar_actualizacion_viajes' viaje.pk %}">
+  {% csrf_token %}
+
+  <div class="mb-3">
+    <label class="form-label">Nombre del viaje</label>
+    <input type="text" name="nombre_viaje" value="{{ viaje.nombre_viaje }}" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Destino</label>
+    <input type="text" name="destino" value="{{ viaje.destino }}" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Descripción</label>
+    <textarea name="descripcion" class="form-control">{{ viaje.descripcion }}</textarea>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Fecha de salida</label>
+      <input type="date" name="fecha_salida" value="{{ viaje.fecha_salida }}" class="form-control">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Fecha de regreso</label>
+      <input type="date" name="fecha_regreso" value="{{ viaje.fecha_regreso }}" class="form-control">
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Precio</label>
+    <input type="text" name="precio" value="{{ viaje.precio }}" class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Clientes</label>
+    <select name="clientes" class="form-select">
+    <option value="">-- Sin asignar --</option>
+      {% for c in clientes %}
+        <option value="{{ c.id }}" {% if c in viaje.clientes.all %}selected{% endif %}>{{ c.nombre }} {{ c.apellido }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Transporte</label>
+    <select name="transporte" class="form-select">
+      <option value="">-- Sin asignar --</option>
+      {% for t in transportes %}
+        <option value="{{ t.id }}" {% if viaje.transporte and viaje.transporte.id == t.id %}selected{% endif %}>{{ t.nombre_transporte }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Empleado</label>
+    <select name="empleado" class="form-select">
+      <option value="">-- Sin asignar --</option>
+      {% for e in empleados %}
+        <option value="{{ e.id }}" {% if viaje.empleado and viaje.empleado.id == e.id %}selected{% endif %}>{{ e.nombre_empleado }} {{ e.apellido_empleado }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Alojamiento</label>
+    <select name="alojamiento" class="form-select">
+      <option value="">-- Sin asignar --</option>
+      {% for a in alojamientos %}
+        <option value="{{ a.id }}" {% if viaje.alojamiento and viaje.alojamiento.id == a.id %}selected{% endif %}>{{ a.nombre_alojamiento }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <button class="btn btn-primary">Actualizar</button>
+  <a href="{% url 'ver_viajes' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

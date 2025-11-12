@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}Agregar Viaje{% endblock %}
+{% block content %}
+<h2>Agregar Viaje</h2>
+<form method="post">
+  {% csrf_token %}
+
+  <div class="mb-3">
+    <label class="form-label">Nombre del viaje</label>
+    <input type="text" name="nombre_viaje" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Destino</label>
+    <input type="text" name="destino" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Descripción</label>
+    <textarea name="descripcion" class="form-control"></textarea>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Fecha de salida</label>
+      <input type="date" name="fecha_salida" class="form-control">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Fecha de regreso</label>
+      <input type="date" name="fecha_regreso" class="form-control">
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Precio</label>
+    <input type="text" name="precio" class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Clientes</label>
+    <select name="clientes" class="form-select">
+      <option value="">-- Selecciona un cliente --</option>
+      {% for c in clientes %}
+        <option value="{{ c.id }}">{{ c.nombre }} {{ c.apellido }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Empleado encargado</label>
+    <select name="empleado" class="form-select" required>
+      <option value="">-- Selecciona un empleado --</option>
+      {% for e in empleados %}
+        <option value="{{ e.id }}">{{ e.nombre_empleado }} {{ e.apellido_empleado }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Asignar Transporte</label>
+    <select name="transporte" class="form-select" required>
+      <option value="">-- Selecciona un transporte --</option>
+      {% for t in transportes %}
+        <option value="{{ t.id }}">{{ t.nombre_transporte }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Asignar Alojamiento</label>
+    <select name="alojamiento" class="form-select" required>
+      <option value="">-- Selecciona un alojamiento --</option>
+      {% for a in alojamientos %}
+        <option value="{{ a.id }}">{{ a.nombre_alojamiento }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <button class="btn btn-primary">Guardar</button>
+  <a href="{% url 'ver_viajes' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

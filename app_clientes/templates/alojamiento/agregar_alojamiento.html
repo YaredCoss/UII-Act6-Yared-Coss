@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Agregar Alojamiento{% endblock %}
+{% block content %}
+<h2>Agregar Alojamiento</h2>
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Nombre del alojamiento</label>
+    <input type="text" name="nombre_alojamiento" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Descripción</label>
+    <textarea name="descripcion" class="form-control"></textarea>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Dirección</label>
+    <textarea name="direccion" class="form-control"></textarea>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Teléfono</label>
+    <input type="text" name="telefono" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Precio</label>
+    <input type="text" name="precio" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Calificación</label>
+    <input type="text" name="calificacion" class="form-control" placeholder="Ej: 4.5">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Página web</label>
+    <input type="text" name="paginaweb" class="form-control">
+  </div>
+  <button class="btn btn-primary">Guardar</button>
+  <a href="{% url 'ver_alojamiento' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
